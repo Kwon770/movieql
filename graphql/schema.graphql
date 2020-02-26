@@ -1,29 +1,15 @@
 """
-원하는 대로, 원하는 만큼 schema 를 정의할 수 있음
+ Type! : Required / Type : Not Required
 """
 type Movie {
   id: Int!
-  name: String!
-  score: Int!
+  title: String!
+  rating: Float!
+  summary: String!
+  language: String!
+  medium_cover_image: String!
 }
 
-"""
-Query , Mutation 을 구현하기 위해서는 해당 schema 를 구현해야 함
-Query: 데이터를 읽는데 사용하고 Mutation: 데이터를 변조하는데 사용 <규약임>
-Query의 반환값은 값을 읽어오는데 사용하며 Mutaition은 변조 후 반응을 불러오기 위함
-mutation {
-  addMovie(name: "name", score: 9) {
-    name
-  }
-}
-==> 이경우 addMovie 한 영화의 이름을 받아옴
-"""
 type Query {
-  movies: [Movie]!
-  movie(id: Int!): Movie
-}
-
-type Mutation {
-  addMovie(name: String!, score: Int!): Movie!
-  deleteMovie(id: Int!): Boolean!
+  movies(limit: Int, rating: Float): [Movie]!
 }

@@ -15,6 +15,7 @@
   "homepage": "https://github.com/Kwon770/movieql#readme",
   "dependencies": {
     "graphql-yoga": "^1.18.3",
+    "node-fetch": "^2.6.0",
     "nodemon": "^2.0.2"
   },
   "devDependencies": {

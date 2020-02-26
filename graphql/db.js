@@ -1,33 +1,20 @@
-let movies = [
-  { id: 1, name: "Star Wars - The new one", score: 1 },
-  { id: 2, name: "Avengers - The new one", score: 10 },
-  { id: 3, name: "The Godfather I", score: 6 },
-  { id: 4, name: "Logan", score: 8 }
-];
+// 서버와 다른 URL (REST APT) 를 통합하는 경우
+// $ yarn add node-fetch : To fetch from node
 
-export const getMovies = () => movies;
+import fetch from "node-fetch";
 
-export const getById = id => {
-  const filtereMovies = Movies.filter(movie => movie.id === id);
-  return filteredMovies[0];
-};
+const API_URL = "https://yts.am/api/v2/list_movies.json?";
 
-export const deleteMovie = id => {
-  const cleanedMovies = movies.filter(movie => movie.id !== id);
-  if (movies.length > cleanedMovies.length) {
-    movies = cleanedMovies;
-    return true;
-  } else {
-    return false;
+export const getMovies = (limit, rating) => {
+  let REQUEST_URL = API_URL;
+  if (limit > 0) {
+    REQUEST_URL += `limit=${limit}`;
   }
-};
-
-export const addMovie = (name, score) => {
-  const newMovie = {
-    id: `${movies.length + 1}`,
-    name,
-    score
-  };
-  movies.push(newMovie);
-  return newMovie;
+  if (rating > 0) {
+    REQUEST_URL += `&minimum_rating=${rating}`;
+  }
+  console.log(REQUEST_URL);
+  return fetch(REQUEST_URL)
+    .then(res => res.json())
+    .then(json => json.data.movies);
 };
