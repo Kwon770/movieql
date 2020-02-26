@@ -1,11 +1,20 @@
-type Person {
+"""
+ 원하는 대로, 원하는 만큼 schema 를 정의할 수 있음
+"""
+type Movie {
   id: Int!
   name: String!
-  age: Int!
-  gender: String!
+  score: Int!
 }
 
+"""
+ Query , Mutation 을 구현하기 위해서는 해당 schema 를 구현해야 함
+"""
 type Query {
-  people: [Person]!
-  person(id: Int!): Person
+  movies: [Movie]!
+  movie(id: Int!): Movie
+}
+
+type Mutation {
+  addMovie(name: String!, score: Int!): Movie!
 }
