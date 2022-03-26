@@ -16,7 +16,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "graphql-yoga": "^1.18.3",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "nodemon": "^2.0.2"
   },
   "devDependencies": {
